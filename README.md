@@ -14,18 +14,19 @@ This is a portfolio engineering project, not a claim of a certified production f
 
 ## Architecture
 
+## Architecture
+
 ```mermaid
 flowchart TD
-    A[Transaction and Customer Generators]
-    B[Fraud Simulation Engine]
-    C[Confluent Cloud Kafka]
-    D[Azure Databricks]
-    E[Bronze: Raw Events]
-    F[Silver: Validated and Transformed Data]
-    G[Gold: Analytical Outputs and Alerts]
-    H[PostgreSQL]
-    I[Monitoring Dashboard]
-    J[Email Alert Workflows]
+    A["Transaction Generators"]
+    B["Fraud Simulation Engine"]
+    C["Confluent Cloud Kafka"]
+    D["Azure Databricks / Spark Structured Streaming"]
+    E["Bronze Layer"]
+    F["Silver Layer"]
+    G["Gold Layer"]
+    H["Fraud Monitoring Dashboard"]
+    I["Email Alert Workflows"]
 
     A --> B
     A --> C
@@ -34,10 +35,12 @@ flowchart TD
     D --> E
     E --> F
     F --> G
+    G --> H
     G --> I
-    G --> J
-    H --> D
 ```
+
+*Conceptual architecture. Confirm that every connection matches the implemented pipeline and configured data sources.*
+
 
 *Architecture overview. Confirm the exact data flow and dependencies against the implementation before treating every connection in this diagram as deployed.*
 
